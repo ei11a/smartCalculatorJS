@@ -1,2 +1,2 @@
 # smartCalrulatorJS
-This project is a simple implementation of a graphing calculator in JS.
+This project is a simple implementation of a graphic calculator in JS.
