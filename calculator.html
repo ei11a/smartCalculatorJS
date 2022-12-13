@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gabriela&display=swap" rel="stylesheet">
+  <title>Simple Calculator</title>
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="container header">
+      <span class="logo">CALCULATOR</span>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="container">
+      <div class="calculator">
+        <div class="sections">
+          <div class="interface">
+            <input class="display-input" type="text">
+            <div class="buttons f-row">
+              <button class="CalcButton sin">C</button>
+              <button class="CalcButton sin">←</button>
+              <button class="CalcButton sin">^</button>
+              <button class="CalcButton sin">0</button>
+              <button class="CalcButton sin">(</button>
+              <button class="CalcButton sin">)</button>
+              <button class="CalcButton sin">.</button>
+            </div>
+
+            <div class="buttons">
+              <button class="CalcButton sin">sin</button>
+              <button class="CalcButton sin">asin</button>
+              <button class="CalcButton sin">√</button>
+              <button class="CalcButton sin">7</button>
+              <button class="CalcButton sin">8</button>
+              <button class="CalcButton sin">9</button>
+              <button class="CalcButton sin">+</button>
+            </div>
+
+            <div class="buttons">
+              <button class="CalcButton sin">cos</button>
+              <button class="CalcButton sin">acos</button>
+              <button class="CalcButton sin">%</button>
+              <button class="CalcButton sin">4</button>
+              <button class="CalcButton sin">5</button>
+              <button class="CalcButton sin">6</button>
+              <button class="CalcButton sin">-</button>
+            </div>
+
+            <div class="buttons">
+              <button class="CalcButton sin">tan</button>
+              <button class="CalcButton sin">atan</button>
+              <button class="CalcButton sin">x</button>
+              <button class="CalcButton sin">1</button>
+              <button class="CalcButton sin">2</button>
+              <button class="CalcButton sin">3</button>
+              <button class="CalcButton sin">*</button>
+            </div>
+
+            <div class="buttons">
+              <button class="CalcButton sin">log</button>
+              <button class="CalcButton sin">ln</button>
+              <button class="CalcButton graph-button">graph</button>
+              <button class="CalcButton eq-button">=</button>
+              <button class="CalcButton sin">/</button>
+            </div>
+
+            <div class="x-value-block">
+              <input class="x-value-input" type="number" placeholder="X Value" step="0.1">
+            </div>
+            
+          </div>
+          <div class="graph">
+            <div class="myChart" id="myChart" style="max-width:700px; height:400px"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+    </div>
+  </footer>
+  
+</body>
+
+<script src="https://www.gstatic.com/charts/loader.js">
+</script>
+
+<script src="js/calculator.js"></script>
+
+</html>
