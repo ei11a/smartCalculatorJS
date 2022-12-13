@@ -28,53 +28,53 @@
       <div class="calculator">
         <div class="sections">
           <div class="interface">
-            <input class="display-input" type="text">
+            <input class="display-input" id="display-input" type="text">
             <div class="buttons f-row">
-              <button class="CalcButton sin">C</button>
-              <button class="CalcButton sin">←</button>
-              <button class="CalcButton sin">^</button>
-              <button class="CalcButton sin">0</button>
-              <button class="CalcButton sin">(</button>
-              <button class="CalcButton sin">)</button>
-              <button class="CalcButton sin">.</button>
+              <button class="CalcButton clear" id="clear">C</button>
+              <button class="CalcButton delete" id="delete">←</button>
+              <button class="CalcButton pow" id="pow">^</button>
+              <button class="CalcButton zero" id="zero">0</button>
+              <button class="CalcButton left-bracket" id="left-bracket">(</button>
+              <button class="CalcButton right-bracket" id="right-bracket">)</button>
+              <button class="CalcButton dot" id="dot">,</button>
             </div>
 
             <div class="buttons">
-              <button class="CalcButton sin">sin</button>
-              <button class="CalcButton sin">asin</button>
-              <button class="CalcButton sin">√</button>
-              <button class="CalcButton sin">7</button>
-              <button class="CalcButton sin">8</button>
-              <button class="CalcButton sin">9</button>
-              <button class="CalcButton sin">+</button>
+              <button class="CalcButton sin" id="sin">sin</button>
+              <button class="CalcButton asin" id="asin">asin</button>
+              <button class="CalcButton sqrt" id="sqrt">√</button>
+              <button class="CalcButton seven" id="seven">7</button>
+              <button class="CalcButton eight" id="eight">8</button>
+              <button class="CalcButton nine" id="nine">9</button>
+              <button class="CalcButton plus" id="plus">+</button>
             </div>
 
             <div class="buttons">
-              <button class="CalcButton sin">cos</button>
-              <button class="CalcButton sin">acos</button>
-              <button class="CalcButton sin">%</button>
-              <button class="CalcButton sin">4</button>
-              <button class="CalcButton sin">5</button>
-              <button class="CalcButton sin">6</button>
-              <button class="CalcButton sin">-</button>
+              <button class="CalcButton cos" id="cos">cos</button>
+              <button class="CalcButton acos" id="acos">acos</button>
+              <button class="CalcButton mod" id="mod">%</button>
+              <button class="CalcButton four" id="four">4</button>
+              <button class="CalcButton five" id="five">5</button>
+              <button class="CalcButton six" id="six">6</button>
+              <button class="CalcButton minus" id="minus">-</button>
             </div>
 
             <div class="buttons">
-              <button class="CalcButton sin">tan</button>
-              <button class="CalcButton sin">atan</button>
-              <button class="CalcButton sin">x</button>
-              <button class="CalcButton sin">1</button>
-              <button class="CalcButton sin">2</button>
-              <button class="CalcButton sin">3</button>
-              <button class="CalcButton sin">*</button>
+              <button class="CalcButton tan" id="tan">tan</button>
+              <button class="CalcButton atan" id="atan">atan</button>
+              <button class="CalcButton x" id="x">x</button>
+              <button class="CalcButton one" id="one">1</button>
+              <button class="CalcButton two" id="two">2</button>
+              <button class="CalcButton three" id="three">3</button>
+              <button class="CalcButton mul" id="mul">*</button>
             </div>
 
             <div class="buttons">
-              <button class="CalcButton sin">log</button>
-              <button class="CalcButton sin">ln</button>
-              <button class="CalcButton graph-button">graph</button>
-              <button class="CalcButton eq-button">=</button>
-              <button class="CalcButton sin">/</button>
+              <button class="CalcButton log" id="log">log</button>
+              <button class="CalcButton ln" id="ln">ln</button>
+              <button class="CalcButton graph-button" id="graph-button">graph</button>
+              <button class="CalcButton eq-button" id="eq-button">=</button>
+              <button class="CalcButton div" id="div">/</button>
             </div>
 
             <div class="x-value-block">
@@ -83,7 +83,7 @@
             
           </div>
           <div class="graph">
-            <div class="myChart" id="myChart" style="max-width:700px; height:400px"></div>
+            <canvas id="myChart"></canvas>
           </div>
         </div>
       </div>
@@ -97,9 +97,9 @@
   
 </body>
 
-<script src="https://www.gstatic.com/charts/loader.js">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
 </script>
 
-<script src="js/calculator.js"></script>
+<script src="js/calculatorDisplay.js"></script>
 
 </html>

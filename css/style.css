@@ -45,6 +45,11 @@ body {
   border: none;
 }
 
+.myChart {
+  width: 48%;
+  height: 390px;
+}
+
 .interface {
   width: 48%;
   height: 100%;
