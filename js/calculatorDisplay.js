@@ -54,10 +54,17 @@ function CreateEvents() {
       let buttonValue = document.getElementsByClassName('CalcButton')[i];
       switch (buttonValue.textContent) {
         case '=':
-          document.getElementById('display-input').value = Calculation();
+          debugger;
+          let str = document.getElementById('display-input').value;
+          console.log(ValidateString(str));
+
+          // if ( document.getElementById('display-input').value = "Incorrect Input";
+          // else document.getElementById('display-input').value = Calculation();
+          
+          delete DataExp.numbers;
           break;
         case 'graph':
-          console.log('eq and graph buttons');
+          console.log('graph buttons');
           break;
         case '←':
           document.getElementById('display-input').value = document.getElementById('display-input').value.slice(0, -1);
@@ -104,8 +111,7 @@ function PolishNotation(str) {
   }
 
   PushRemains();
-  console.log(DataExp.numbers);
-  console.log(DataExp.symbols);
+
 }
 
 function PushRemains() {
@@ -119,11 +125,8 @@ function ConcatArrayElements(index, expression) {
   let numberTokens = [];
   expression = expression.slice(index, expression.length);
   for (let index in expression) {
-    if (!isNaN(parseFloat(expression[index])) || expression[index] == '.') {
-      numberTokens.push(expression[index]);
-    } else {
-      break;
-    }
+    if (!isNaN(parseFloat(expression[index])) || expression[index] == '.') numberTokens.push(expression[index]);
+    else break;
   }
   return numberTokens.join('');
 }
@@ -186,12 +189,9 @@ function AddFunction(func, index, expression) {
 
     case 'a':
 
-      if (/asin/.test(expression))
-        DataExp.symbols.push('r');
-      else if (/acos/.test(expression))
-        DataExp.symbols.push('o');
-      else if (/atan/.test(expression))
-        DataExp.symbols.push(func);
+      if (/asin/.test(expression)) DataExp.symbols.push('r');
+      else if (/acos/.test(expression)) DataExp.symbols.push('o');
+      else if (/atan/.test(expression)) DataExp.symbols.push(func);
       step = 4;
       break;
 
@@ -208,19 +208,16 @@ function AddFunction(func, index, expression) {
 
     case 'c':
 
-      if (/cos/.test(expression))
-        DataExp.symbols.push(func);
+      if (/cos/.test(expression)) DataExp.symbols.push(func);
       step = 3;
       break;
 
     case 't':
 
-      if (/tan/.test(expression))
-        DataExp.symbols.push(func);
+      if (/tan/.test(expression)) DataExp.symbols.push(func);
       step = 3;
       break;
   }
-  console.log(DataExp.symbols.push(func));
   return step;
 }
 
@@ -229,26 +226,95 @@ function Calculation() {
   let first = 0, second = 0;
   for (let index in DataExp.numbers) {
     if (!isNaN(parseFloat(DataExp.numbers[index]))) {
+      
       DataExp.digits.push(DataExp.numbers[index]);
+
     } else {
       if (binar.has(DataExp.numbers[index])) {
 
-        first = parseFloat(DataExp.digits[DataExp.digits.length - 1]);
+        first = Number(DataExp.digits[DataExp.digits.length - 1]);
         DataExp.digits.pop();
-        second = parseFloat(DataExp.digits[DataExp.digits.length - 1]);
+        second = Number(DataExp.digits[DataExp.digits.length - 1]);
         DataExp.digits.pop();
         DataExp.digits.push(binar.get(DataExp.numbers[index])(first, second));
 
       } else if (unar.has(DataExp.numbers[index])) {
 
-        first = parseFloat(DataExp.digits[DataExp.digits.length - 1]);
+        first = Number(DataExp.digits[DataExp.digits.length - 1]);
         DataExp.digits.pop();
         DataExp.digits.push(unar.get(DataExp.numbers[index])(first));
 
       }
     }
   }
-  let result = parseFloat(DataExp.digits[DataExp.digits.length - 1]);
+  let result = Number(DataExp.digits[DataExp.digits.length - 1]);
   return result;
 }
+
+
+function ValidateString(str) {
+  if (!Check(str)) return false;
+
+  if (!isNaN(parseFloat(str[0])) || str[0] == 'x' || str[0] == '(') {
+    if (ValitadeDigits(str)) return true;
+  }
+
+  if (/^[a-z]/.test(str[0])|| str[0] == '(') return ValidateFunctions(str);
+
+  return false;
+}
+
+function ValitadeDigits(str) {
+  if (str.length == 0) return true;
+
+  if (digits.test(str)) return ValidateOperators(str.substr((str.match(digits).length)));
+
+  return false;
+}
+
+function ValidateOperators(str) {
+  if (str.length == 0) return true;
+
+  if (operators.test(str)) {
+    let size = (str.match(operators)).length;
+
+    if (ValitadeDigits(str.substr(size)))
+      return true;
+    else
+      return ValidateFunctions(str.substr(size));
+  }
+  return false;
+}
+
+function ValidateFunctions(str) {
+  if (str.length == 0) return true;
+
+  if (functs.test(str)) {
+    let size = (str.match(functs)).length;
+
+    if (ValitadeDigits(str.substr(size))) return true;
+
+    return ValidateFunctions(str.substr(size));
+  }
+  return false;
+}
+
+function Check(str) {
+  let it = 0;
+  let s = [];
+  while (it != str.length && str[it] != '(' && str[it] != ')') {
+    ++it;
+  }
+  while (it != str.length) {
+    if (str[it] == '(') s.push('(');
+    else if (str[it] == ')') {
+      if (s.length == 0) return false;
+      s.pop();
+    }
+    ++it;
+  }
+  return (s.length==0);
+}
+
+
 
